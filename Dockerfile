@@ -23,11 +23,16 @@ ENV HOME /home/${username}
 USER ${username}
 
 ADD dot-bashrc ${HOME}/.bashrc
+ADD dot-rootlogon ${HOME}/.rootlogon.C
 
 # Our working directory will be in our home directory where we have permissions
 #WORKDIR /home/${username}
 WORKDIR ${HOME}
 
 RUN ln -s ${HOME}/current_dir/.bash_history ./
+RUN ln -s ${HOME}/current_dir/.root_hist ./
+
+# Our (final) working dir is the directory "mounted" from outside the container: docker run --rm -it -v `pwd`:/home/studente/current_dir bozzochet/studenti:latest
+WORKDIR ${HOME}/current_dir
 
 CMD ["root", "-b"]
