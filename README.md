@@ -74,27 +74,25 @@ docker run --rm -it -e DISPLAY=10.0.75.1:0 bozzochet/studenti:latest
 docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
 ```
 will
-* export the display;
-* export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
-* open a bash session.
-
+  * export the display;
+  * export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+  * open a bash session.
 1. this:
 ```
 docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
 ```
 will
-* export the display;
-* export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
-* open a bash session.
-	
+  * export the display;
+  * export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+  * open a bash session.	
 1. this:
 ```
 docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
 ```
 will
-* export the display;
-* export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
-* open a bash session.
+  * export the display;
+  * export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+  * open a bash session.
 
 If running without the last argument a ROOT CINT (in batch mode) session will be opened. This argument can be substituted with another command, for example `root` to start a ROOT CINT (graphical) session.
 
