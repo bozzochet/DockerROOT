@@ -1,11 +1,17 @@
 ## studenti
 To host the Dockefile for a container with ROOT, compiler, emacs, ...
 
-This is connected to DockerHub (https://github.com/bozzochet/studenti) and the build is automatical at every push. The idea is to take the Docker image and run directly from DockerHub without looking at this code.
+The code on GitHub (https://github.com/bozzochet/studenti) is then connected to DockerHub (https://github.com/bozzochet/studenti) and the build is automatical at every push. The idea is to take the Docker image and run directly from DockerHub without looking at the GitHub code.
 
-The Docker will be built starting from the ufficial ROOT Docker: https://hub.docker.com/r/rootproject/root 
+The Docker will be built starting from the ufficial ROOT Docker: https://hub.docker.com/r/rootproject/root and the README of that DockerHub image is quite helpful (part of it is replicated here).
 
-### To build:
+### Supported tags
+* latest
+
+### Supported C++ standards
+Tag 'latest' (the default tag) comes with ROOT compiled with C++11 support.
+
+### To build (if taking the image from DockerHub you **don't need** to do this):
 ```
 $ docker build --tag bozzochet/studenti:latest .
 ```
