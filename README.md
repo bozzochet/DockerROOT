@@ -17,15 +17,21 @@ $ docker build --tag bozzochet/studenti:latest .
 ```
 
 ### To run the container:
-[Adapted from https://hub.docker.com/r/rootproject/root] In order to run containers, you must have Docker installed and, once, you need to execute
+[adapted from https://hub.docker.com/r/rootproject/root]
+
+In order to run containers, you must have Docker installed and, once, you need to execute
 ```
 docker pull bozzochet/studenti
 ```
 Then you can start a container by running the following command in your terminal which will start the latest stable release of ROOT:
-```docker run --rm -it rootproject/root
 ```
-Note that the `--rm` flag tells Docker to remove the container, together with its data, once it is shut down. In order to persist data, it is recommended to mount a directory on the container. For example, to mount your home directory on Linux and Mac, run:
-```docker run --rm -it -v ~:/userhome --user $(id -u) rootproject/root
+docker run --rm -it bozzochet/studenti:latest
+```
+Note that the `--rm` flag tells Docker to remove the container, together with its data, once it is shut down. In order to persist data, it is recommended to mount a directory on the container. The idea is to have a "working dir" where to work and, in particular, run the container. This directory can contain all the files you need when you'll be inside the container and then will host few small (hidden) files to have the persistence of the bash and ROOT history and any "output" file you create inside the container and you want to keep afterwards.
+
+On Linux and Mac, run:
+```
+docker run --rm -it -v ~:/userhome --user $(id -u) rootproject/root
 ```
 On Windows, you have to specify the full path to your user directory: docker run --rm -it -v C:\\Users\\Username:/userhome rootproject/root
 ```
