@@ -16,7 +16,7 @@ USER root
 
 # Create a user that does not have root privileges 
 ARG username=studente
-RUN userdel builder && useradd --create-home --home-dir /home/${username} ${username}
+RUN useradd --create-home --home-dir /home/${username} ${username}
 ENV HOME /home/${username}
 
 # Switch to our newly created user
