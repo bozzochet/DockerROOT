@@ -22,10 +22,12 @@ ENV HOME /home/${username}
 # Switch to our newly created user
 USER ${username}
 
+ADD dot-bashrc ${HOME}/.bashrc
+
 # Our working directory will be in our home directory where we have permissions
 #WORKDIR /home/${username}
 WORKDIR ${HOME}
 
-ADD dot-bashrc ${HOME}/.bashrc
+RUN ln -s ${HOME}/current_dir/.bash_history ./
 
 CMD ["root", "-b"]
