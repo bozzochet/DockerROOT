@@ -37,7 +37,7 @@ On Windows, you have to specify the full path to your user directory, e.g.:
 ```
 docker run --rm -it -v C:\\Users\\<where you are>:/home/studente/current_dir bozzochet/studenti:latest
 ```
-The `-v` option tells Docker to mount the home directory (`~`) to `/userhome` in the container. `--user $(id -u)` signs us in with the same userid as in the host in order to allow reading/writing to the mounted directory. This is not necessary on Windows. Mac and Windows users does however have to mark the drives or areas they want to mount as shared in the Docker application under settings.
+The `-v` option tells Docker to mount the home directory (`~`) to `/userhome` in the container. ~~`--user $(id -u)` signs us in with the same userid as in the host in order to allow reading/writing to the mounted directory. This is not necessary on Windows. Mac and Windows users does however have to mark the drives or areas they want to mount as shared in the Docker application under settings.~~
 
 [Configuring Docker for Windows Shared Drives / Volume Mounting with AD](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/)
 [More about mounting host directories in the container.](https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume)
