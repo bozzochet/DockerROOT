@@ -23,8 +23,9 @@ ENV HOME /home/${username}
 USER ${username}
 
 # Our working directory will be in our home directory where we have permissions
-WORKDIR /home/${username}
+#WORKDIR /home/${username}
+WORKDIR ${HOME}
 
-ADD dot-bashrc ~/.bashrc
+ADD dot-bashrc ${HOME}/.bashrc
 
 CMD ["root", "-b"]
