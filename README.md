@@ -68,7 +68,7 @@ Then restart Xming and start the container with the following command:
 docker run --rm -it -e DISPLAY=10.0.75.1:0 bozzochet/studenti:latest
 ```
 
-## Examples
+## Examples (OSX as "host")
 ##### Bash session:
 ```
 docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
