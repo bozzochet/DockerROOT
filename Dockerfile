@@ -25,4 +25,6 @@ USER ${username}
 # Our working directory will be in our home directory where we have permissions
 WORKDIR /home/${username}
 
+ADD dot-bashrc ~/.bashrc
+
 CMD ["root", "-b"]
