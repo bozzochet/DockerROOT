@@ -69,7 +69,7 @@ docker run --rm -it -e DISPLAY=10.0.75.1:0 bozzochet/studenti:latest
 ```
 
 ## Examples
-1. this:
+##### Bash session:
 ```
 docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
 ```
@@ -78,25 +78,23 @@ will
   - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
   - open a bash session.
   
-2. this:
+##### ROOT CINT (batch mode, no graphics):
 ```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
-```
-will
-  - export the display;
-  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
-  - open a bash session.	
-
-3. this:
-```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest
 ```
 will
   - export the display;
   - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
-  - open a bash session.
+  - open ROOT CINT in batch mode (i.e. `root -b`).
 
-If running without the last argument a ROOT CINT (in batch mode) session will be opened. This argument can be substituted with another command, for example `root` to start a ROOT CINT (graphical) session.
+##### ROOT CINT (graphics enabled)
+```
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest root
+```
+will
+  - export the display;
+  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+  - open ROOT CINT (graphics enabled, i.e. `root` command)
 
 ## Examples of different containers
 [See GitHub for example Dockerfiles.](https://github.com/root-project/docker-examples)
