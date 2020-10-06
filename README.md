@@ -5,7 +5,7 @@ This is connected to DockerHub (https://github.com/bozzochet/studenti) and the b
 
 The Docker will be built starting from the ufficial ROOT Docker: https://hub.docker.com/r/rootproject/root 
 
-### To build something like:
+### To build:
 ```
 $ docker build --tag bozzochet/studenti:latest .
 ```
@@ -15,7 +15,7 @@ $ docker build --tag bozzochet/studenti:latest .
 docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
 ```
 and this will:
-* export the display (look at https://github.com/bozzochet/studenti and itss source, https://hub.docker.com/r/rootproject/root, for more explanations om this)
-* export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent
-* open a bash session. If running without the last argument a ROOT CINT (in batch mode) session will be opened. This argument can be substituted with another command: for example `root` to start a ROOT CINT (graphical) session
+* export the display (look at https://github.com/bozzochet/studenti and its source, https://hub.docker.com/r/rootproject/root, for more explanations on this);
+* export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+* open a bash session. If running without the last argument a ROOT CINT (in batch mode) session will be opened. This argument can be substituted with another command, for example `root` to start a ROOT CINT (graphical) session.
 
