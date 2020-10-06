@@ -42,39 +42,40 @@ The `-v` option tells Docker to mount the home directory (`~`) to `/userhome` in
 [Configuring Docker for Windows Shared Drives / Volume Mounting with AD](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/)
 [More about mounting host directories in the container.](https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume)
 
-```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
-```
-and this will:
-* export the display (look at https://github.com/bozzochet/studenti and its source, https://hub.docker.com/r/rootproject/root, for more explanations on this);
-* export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
-* open a bash session. If running without the last argument a ROOT CINT (in batch mode) session will be opened. This argument can be substituted with another command, for example `root` to start a ROOT CINT (graphical) session.
-
-
 ### Enabling graphics
 
 ##### Linux
 To use graphics, make sure you are in an X11 session and run the following command:
 
 ```
-docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm -it --user $(id -u) rootproject/root root
+docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm -it --user $(id -u) bozzochet/studenti:latest
 ```
 
 On some platforms (e.g., Arch Linux) connections to the X server must be allowed explicitly by executing `xhost local:root` or an equivalent command (see e.g. [this page](https://wiki.archlinux.org/index.php/Xhost) for more information on `xhost` and its possible security implications).
 
 ##### OSX
-To use graphics on OSX, make sure [XQuarz](https://www.xquartz.org/) is installed. After installing, open XQuartz, and go to XQuartz, Preferences, select the Security tab, and tick the box "Allow connections from network clients". Then exit XQuarz. Afterwards, open a terminal and run the following commands:
-`ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')`
+To use graphics on OSX, make sure [XQuarz](https://www.xquartz.org/) is installed. After installing, open XQuartz, and go to XQuartz, Preferences, select the Security tab, and tick the box "Allow connections from network clients". Then exit XQuarz. Afterwards, open a terminal and run the following commands: `ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')`
 This will grab your IP address on the local network. Run `echo $ip` to make sure it was successfull. If nothing is displayed, replace `en0` with `en1` or a higher number in the command.
-`xhost + $ip`
-This will start XQuartz and whitelist your local IP address. Finally, you can start up ROOT with the following command:
-`docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$ip:0 rootproject/root`
+Then is enough to run `xhost + $ip` and this will start XQuartz and whitelist your local IP address. Finally, you can start up ROOT with the following command:
+```
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$ip:0 bozzochet/studenti:latest
+```
 
 ##### Windows
-To enable graphics, you must have [Xming](https://sourceforge.net/projects/xming/) installed. Make sure Xming is whitelisted in the Windows firewall when prompted. After installing Xming, white-list the IP-address of the Docker containers in Xming by running the following command in PowerShell as administrator: 
-``Add-Content 'C:\Program Files (x86)\Xming\X0.hosts' "`r`n10.0.75.2"`` 
-Restart Xming and start the container with the following command: 
-`docker run --rm -it -e DISPLAY=10.0.75.1:0 rootproject/root`
+To enable graphics, you must have [Xming](https://sourceforge.net/projects/xming/) installed. Make sure Xming is whitelisted in the Windows firewall when prompted. After installing Xming, white-list the IP-address of the Docker containers in Xming by running the following command in PowerShell as administrator: `Add-Content 'C:\Program Files (x86)\Xming\X0.hosts' "`r`n10.0.75.2"`
+Then restart Xming and start the container with the following command: 
+```
+docker run --rm -it -e DISPLAY=10.0.75.1:0 bozzochet/studenti:latest
+```
 
 ## Examples
+This will:
+* export the display (look at https://github.com/bozzochet/studenti and its source, https://hub.docker.com/r/rootproject/root, for more explanations on this);
+* export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+* open a bash session. If running without the last argument a ROOT CINT (in batch mode) session will be opened. This argument can be substituted with another command, for example `root` to start a ROOT CINT (graphical) session.
+
+
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
+
+## Examples of different containers
 [See GitHub for example Dockerfiles.](https://github.com/root-project/docker-examples)
