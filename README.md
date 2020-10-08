@@ -72,9 +72,9 @@ docker run --rm -it -e DISPLAY=<your-ip>:0.0 bozzochet/studenti:latest
 
 ## Step by step instructions for Windows 10 as Host:
 #### Preliminary
-A. Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
-B. Install [vcxsrv](https://sourceforge.net/projects/vcxsrv/).
-C. Download a starting script from here [link](https://github.com/bozzochet/studenti/blob/master/StartDocker.ps1). This script is used to set a couple of Powershell variables with your IP address and the full path to your current directory. I suggest to create a directory inside your home (i.e. C:\Users\<your-user-name>\Scripts) and move the script there. After this you can add this directory to your PATH in order to be able to execute this script from everywhere inside the machine. To do this you need to open a Powershell as Administrator and type the following commands:
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
+2. Install [vcxsrv](https://sourceforge.net/projects/vcxsrv/).
+3. Download a starting script from here [link](https://github.com/bozzochet/studenti/blob/master/StartDocker.ps1). This script is used to set a couple of Powershell variables with your IP address and the full path to your current directory. I suggest to create a directory inside your home (i.e. C:\Users\<your-user-name>\Scripts) and move the script there. After this you can add this directory to your PATH in order to be able to execute this script from everywhere inside the machine. To do this you need to open a Powershell as Administrator and type the following commands:
 ```
 Set-ExecutionPolicy RemoteSigned
 setx /M PATH "$($env:path);C:\Users\<your-user-name>\Scripts"
@@ -82,7 +82,7 @@ setx /M PATH "$($env:path);C:\Users\<your-user-name>\Scripts"
 First command enable the use of costum script while the second add the dir which contains the script to your PATH.
 
 #### XLaunch
-Start XLaunch: a GUI menu will be shown, leave all settings as they are by default but on third page add a thick mark on ```Disable access controll```. Continue and end the configuration, X server will start. ([Example](https://dev.to/darksmile92/run-gui-app-in-linux-docker-container-on-windows-host-4kde))
+Start XLaunch: a GUI menu will be shown, leave all settings as they are by default but on third page add a thick mark on ```Disable access control```. Continue and end the configuration, X server will start. ([Example](https://dev.to/darksmile92/run-gui-app-in-linux-docker-container-on-windows-host-4kde))
 
 #### Start the Docker (automatically)
 Open a Powershell (as normal user), navigate on the directory where you want to work and run ```StartDocker.ps1```. At this point the docker will start and if everything is fine you will be logged into a Linux machine as "studente" and inside the "current_dir" directory. This directory is the same one you have in the host and represents the way to share data between host and docker. You can launch ROOT simply giving ```root``` command. Graphics interface should be correctly enabled.
@@ -90,10 +90,10 @@ Open a Powershell (as normal user), navigate on the directory where you want to 
 The scripts accepts also parameters:
 ```
 StartDocker.ps1 root macro.C
-``
+```
 
 #### Start the Docker (by hand) 
-Download this [script](https://github.com/bozzochet/studenti/blob/master/PrepareEnv.ps1) and run as in point C. Now the variables are set and you can start docker:
+Download this [script](https://github.com/bozzochet/studenti/blob/master/PrepareEnv.ps1) and run as in point 3. Now the variables are set and you can start docker:
 ```
 docker run --rm -it -e DISPLAY=${ipaddress}:0.0 -v ${localPath}:/home/studente/current_dir bozzochet/studenti:latest
 ``
