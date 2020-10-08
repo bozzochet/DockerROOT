@@ -75,7 +75,7 @@ docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/cur
 ```
 will
   - export the display;
-  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite useful and makes the bash and ROOT history persistent;
   - open a bash session.
   
 ##### ROOT CINT (batch mode, no graphics):
@@ -84,7 +84,7 @@ docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/cur
 ```
 will
   - export the display;
-  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite useful and makes the bash and ROOT history persistent;
   - open ROOT CINT in batch mode (i.e. `root -b`).
 
 ##### ROOT CINT (graphics enabled)
@@ -93,8 +93,18 @@ docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/cur
 ```
 will
   - export the display;
-  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
+  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite useful and makes the bash and ROOT history persistent;
   - open ROOT CINT (graphics enabled, i.e. `root` command)
+
+##### ROOT CINT macro execution (graphics enabled)
+```
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest root macro.C
+```
+will
+  - export the display;
+  - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite useful and makes the bash and ROOT history persistent. Here is permitting to 'call' a (local) macro file (`macro.C` in this example) and find it also inside the container; 
+  - open ROOT CINT (graphics enabled, i.e. `root` command);
+  - run the macro `macro.C`
 
 ## Examples of different containers
 [See GitHub for example Dockerfiles.](https://github.com/root-project/docker-examples)
