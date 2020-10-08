@@ -92,11 +92,11 @@ The scripts accepts also parameters:
 StartDocker.ps1 root macro.C
 ```
 
-#### Start the Docker (by hand) 
+#### (alternatively) Start the Docker (by hand) 
 Download this [script](https://github.com/bozzochet/studenti/blob/master/PrepareEnv.ps1) and run as in point 3. Now the variables are set and you can start docker:
 ```
 docker run --rm -it -e DISPLAY=${ipaddress}:0.0 -v ${localPath}:/home/studente/current_dir bozzochet/studenti:latest
-``
+```
 
 ## Examples (OSX as "host")
 ##### Bash session:
