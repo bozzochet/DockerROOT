@@ -71,7 +71,7 @@ docker run --rm -it -e DISPLAY=10.0.75.1:0 bozzochet/studenti:latest
 ## Examples (OSX as "host")
 ##### Bash session:
 ```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest /bin/bash
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'`:0 bozzochet/studenti:latest /bin/bash
 ```
 will
   - export the display;
@@ -80,7 +80,7 @@ will
   
 ##### ROOT CINT (batch mode, no graphics):
 ```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'`:0 bozzochet/studenti:latest
 ```
 will
   - export the display;
@@ -89,7 +89,7 @@ will
 
 ##### ROOT CINT (graphics enabled)
 ```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest root
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'`:0 bozzochet/studenti:latest root
 ```
 will
   - export the display;
@@ -98,7 +98,7 @@ will
 
 ##### ROOT CINT macro execution (graphics enabled)
 ```
-docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=$ip:0 bozzochet/studenti:latest root macro.C
+docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -v `pwd`:/home/studente/current_dir -e DISPLAY=`ifconfig en0 | grep inet | awk '$1=="inet" {print $2}'`:0 bozzochet/studenti:latest root macro.C
 ```
 will
   - export the display;
