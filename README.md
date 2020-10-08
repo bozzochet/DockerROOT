@@ -62,10 +62,12 @@ docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$ip:0 bozzochet/
 ```
 
 ##### Windows
-To enable graphics, you must have [Xming](https://sourceforge.net/projects/xming/) installed. Make sure Xming is whitelisted in the Windows firewall when prompted. After installing Xming, white-list the IP-address of the Docker containers in Xming by running the following command in PowerShell as administrator: `Add-Content 'C:\Program Files (x86)\Xming\X0.hosts' "`r`n10.0.75.2"`
-Then restart Xming and start the container with the following command: 
+To enable graphics, you must have ~~[Xming](https://sourceforge.net/projects/xming/)~~ [vcxsrv](https://sourceforge.net/projects/vcxsrv/) installed. Make sure it is whitelisted in the Windows firewall when prompted.
+~~After installing Xming, white-list the IP-address of the Docker containers in Xming by running the following command in PowerShell as administrator: `Add-Content 'C:\Program Files (x86)\Xming\X0.hosts' "`r`n10.0.75.2"`
+Then restart Xming and start the container with the following command:~~
+After installing vcxsrv, start XLaunch leave all settings as they are but add the thick on "Disable access control" (on third page), after this launch the docker:
 ```
-docker run --rm -it -e DISPLAY=10.0.75.1:0 bozzochet/studenti:latest
+docker run --rm -it -e DISPLAY=<your-ip>:0.0 bozzochet/studenti:latest
 ```
 
 ## Examples (OSX as "host")
