@@ -76,10 +76,12 @@ docker run --rm -it -e DISPLAY=<your-ip>:0.0 bozzochet/studenti:latest
 2. Install [vcxsrv](https://sourceforge.net/projects/vcxsrv/).
 3. Download a starting script from here [link](https://github.com/bozzochet/studenti/blob/master/StartDocker.ps1). This script is used to set a couple of Powershell variables with your IP address and the full path to your current directory. I suggest to create a directory inside your home (i.e. C:\Users\<your-user-name>\Scripts) and move the script there. After this you can add this directory to your PATH in order to be able to execute this script from everywhere inside the machine. To do this you need to open a Powershell as Administrator and type the following commands:
 ```
-Set-ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy Unrestricted
 setx /M PATH "$($env:path);C:\Users\<your-user-name>\Scripts"
 ```
 First command enable the use of costum script while the second add the dir which contains the script to your PATH.
+
+(`Set-ExecutionPolicy RemoteSigned` seems enough only if you create the script by yourself. Downloading from somewhere and trying to run seems to need for a higher level of permissions. Both `RemoteSigned` and `Unrestricted` pose a severe risk for the safety of your system: please consider to "close" every work session reverting it `Set-ExecutionPolicy Restricted` or `Set-ExecutionPolicy Default`)
 
 #### XLaunch
 Start XLaunch: a GUI menu will be shown, leave all settings as they are by default but on third page add a thick mark on ```Disable access control```. Continue and end the configuration, X server will start. ([Example](https://dev.to/darksmile92/run-gui-app-in-linux-docker-container-on-windows-host-4kde))
